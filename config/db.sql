@@ -20,14 +20,6 @@ CREATE TABLE IF NOT EXISTS parking_spaces(
     status VARCHAR(50) DEFAULT 'bo\'sh' NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS payments(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    rental_id INT NOT NULL,
-    payment_date DATE NOT NULL,
-    payment_method VARCHAR(50) NOT NULL,
-    sum DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (rental_id) REFERENCES rentals(id)
-)
 
 CREATE TABLE IF NOT EXISTS rentals(
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -41,6 +33,14 @@ CREATE TABLE IF NOT EXISTS rentals(
     FOREIGN KEY (parking_space_id) REFERENCES parking_spaces(id)
 );
 
+CREATE TABLE IF NOT EXISTS payments(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    rental_id INT NOT NULL,
+    payment_date DATE NOT NULL,
+    payment_method VARCHAR(50) NOT NULL,
+    sum DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (rental_id) REFERENCES rentals(id)
+)
 
 SHOW DATABASES;
 
